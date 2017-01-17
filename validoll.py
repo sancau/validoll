@@ -24,13 +24,13 @@ class ResolveError(Exception):
 def validate(data, schema, strict=False):
     output = {}
 
-    uknown = set(data.keys()) - set(schema.keys())
-    if uknown and strict:
+    unknown = set(data.keys()) - set(schema.keys())
+    if unknown and strict:
         raise ValidationError(
-            'Found uknown fields while strict mode is on. '
-            'Fields: {}'.format([i for i in uknown]))
+            'Found unknown fields while strict mode is on. '
+            'Fields: {}'.format([i for i in unknown]))
     else:
-        output.update({key: data[key] for key in uknown}) 
+        output.update({key: data[key] for key in unknown}) 
 
     for k, v in schema.items():
         if not k in data:
