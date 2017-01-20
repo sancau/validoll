@@ -42,8 +42,7 @@ def validate(data, schema, strict=True):
         if k not in data:
             if v.get('required', None):
                 validation_errors.append('{} is required in {}'.format(k, data))
-            else:
-                continue
+            continue
 
         defined_type = v.get('type', None)
         if defined_type and not isinstance(data[k], defined_type):
